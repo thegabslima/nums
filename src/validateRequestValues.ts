@@ -1,6 +1,6 @@
 export const validateRequestValues = (values: Array<number>): Array<number | ''> => {
    
-    if (values.length < 4) {
+    if (values.length < 5) {
         return [];
     }
     
