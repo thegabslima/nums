@@ -8,7 +8,7 @@ import { searchValue } from './src/searchValue';
 const app = express();
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
+app.post('/nums', (req, res) => {
   const { nums } = req.body;
   const { valueToFind } = req.body;
 
@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
     return res.status(400).send('Valores não informados');
   }
 
-  if(nums.some((num: any) => typeof num !== 'number')) {
+  if(nums.some((num) => typeof num !== 'number')) {
     return res.status(400).send('Valores não numéricos não são permitidos');
   }
 
@@ -27,8 +27,8 @@ app.get('/', (req, res) => {
   }
 
   const result = searchValue(isValidatedNums, valueToFind);
-  
-  res.send('Hello World');
+
+  res.send(result);
 });
 
 
