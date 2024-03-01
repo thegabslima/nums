@@ -1,4 +1,4 @@
-export const validateRequestValues = (values: Array<number>): Array<number | ''> => {
+export const validateRequestValues = (values: Array<number>): Array<number> => {
    
     if (values.length < 5) {
         return [];

@@ -3,12 +3,14 @@ import express from 'express';
 import { createServer } from 'http';
 import bodyParser from 'body-parser';
 import { validateRequestValues } from './src/validateRequestValues';
+import { searchValue } from './src/searchValue';
 
 const app = express();
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
   const { nums } = req.body;
+  const { valueToFind } = req.body;
 
   if (!nums) {
     return res.status(400).send('Valores não informados');
@@ -24,6 +26,7 @@ app.get('/', (req, res) => {
     return res.status(400).send('Verique se há pelo menos 5 valores numéricos');
   }
 
+  const result = searchValue(isValidatedNums, valueToFind);
   
   res.send('Hello World');
 });
